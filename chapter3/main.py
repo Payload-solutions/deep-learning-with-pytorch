@@ -4,34 +4,24 @@ import numpy as np
 import torch
 
 
-# def np_arrays():
-#     vector = np.array([1, 2, 3, 4])
-#     matrix = np.array([[2, 3, 5], [7, 11, 13], [17, 19, 23]])
-#     tensor = np.array([
-#         [[2, 3, 5], [7, 11, 13], [17, 19, 23]],
-#         [[2, 3, 5], [7, 11, 13], [17, 19, 23]],
-#         [[2, 3, 5], [7, 11, 13], [17, 19, 23]]
-#     ])
-
-
-#     print(f"""vector => {vector} 
-    
-#     A matrix:
-#     {matrix}
-#     A Tensor:
-#      {tensor}""")
 
 
 def firsts_tensors():
-    """a = torch.ones(3)
-    print(a)
-    print(a[0])
-    print(a[2])
-    
-    for x in a:
-        print(x)"""
 
+    tensor_img = torch.randn(3, 5, 5) # shape [channels rows, columns]
+    tensor_zeros = torch.zeros(3, 5, 5)
+    # print(tensor_zeros)
+    # print(tensor_img)
 
+    weights = torch.tensor([0.2126, 0.7152, 0.0722])
+    # print(weights)
+
+    batch_t = torch.randn(2, 3, 5, 5)
+    print(batch_t)
+    img_gray_naive = tensor_img.mean(-3)
+    batch_gray_naive = batch_t.mean(-3)
+    print("\n", img_gray_naive.shape )
+    print("\n", batch_gray_naive.shape)
 
 def main():
     firsts_tensors()
