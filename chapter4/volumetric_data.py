@@ -1,10 +1,27 @@
 """Working with volumetric data"""
 
 
-"""We've learned how to load and preent 2D images, like the
-ones we take with a camera in some contexts, such as medical
-imaging applications involving, say, CT (computed tomography)
-scans, we typically deal with sequences of images stacked along
-the headto-foot axis, each corresponding to a slice across the 
-human body
-"""
+import imageio
+import torch
+
+
+
+DIR_PATH = "../data/p1ch4/volumetric-dicom/2-LUNG 3.0  B70f-04083"
+
+def volumetric_data_tensors():
+    vol_arr = imageio.volread(DIR_PATH, 'DICOM')
+    print(vol_arr.shape)
+
+    vol = torch.from_numpy(vol_arr).float()
+    vol = torch.unsqueeze(vol, 0)
+
+    print(f"volumen shape => {vol.shape}")
+
+
+def main():
+    volumetric_data_tensors()
+
+
+
+if __name__ == "__main__":
+    main()
