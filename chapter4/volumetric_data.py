@@ -1,5 +1,6 @@
 """Working with volumetric data"""
 
+from typing import Any
 import numpy as np
 import imageio
 import torch
@@ -30,12 +31,12 @@ def parsing_wine_dataset() -> None:
     # representing scores
     # selects all rows and all columns except the last
     data = wineq[:, :-1]
-    print("data: \n\n", data)
-    print(data.shape)
+    # print("data: \n\n", data)
+    # print(data.shape)
 
     # selects all rows ans the last column
     target = wineq[:, -1].long()
-    print(target)
+    # print(target)
 
     """The other approach is to build a one-hot encoding of the scores:
         that is, encode each of the 10 scores in a vector of 10 elements,
